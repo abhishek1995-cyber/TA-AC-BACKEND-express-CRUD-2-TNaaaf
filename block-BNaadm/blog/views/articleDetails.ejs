@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- css -->
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Article details </h1>
+      <a href="/"><button>home</button></a>
+       <h2> <%= article.title %> </h2>
+       <h3> <%= article.description %> </h3>
+       <h4> <%= article.tags %> </h4>
+       <h5> <%= article.author %> </h5>
+       <h6> <%= article.likes %> </h6>
+       <a href="/articles/<%= article._id %>/edit"><button>Edit</button></a>
+       <a href="/articles/<%= article._id %>/delete"><button>Delete</button></a>
+       <div>
+        <form action="/articles/<%= article._id %>/comments" method="post">
+            <textarea name="content"  cols="30" rows="10" placeholder="your comment"></textarea>
+            <input type="submit" value="Add comment">
+        </form>
+       </div>
+
+
+     <%  comments.forEach(comment=>{ %>
+        <div>
+            <p> <%= comment.content %></p>
+            <a href="/comments/<%= comment._id %>/edit">
+                <button>edit</button>
+            </a>
+            <a href="/comments/<%= comment._id %>/delete">
+                <button>delete</button>
+            </a>
+        </div>
+      <% }) %>
+</body>
+</html>
